@@ -23,6 +23,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        //デフォルトのインデックス用文字列長を191に変更
+        Schema::defaultStringLength(191);
     }
 }
