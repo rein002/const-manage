@@ -21,3 +21,8 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+//Route::get('/browse', 'BrowseController@show');
+
+Route::get('/search', 'HomeController@search');
+Route::get('/searched', 'HomeController@searched');

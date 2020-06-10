@@ -3,19 +3,27 @@
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-md-8">
+        <div class="col-md-4">
             <div class="card">
-                <div class="card-header">Dashboard</div>
+                <a class="btn btn-info btn-lg" href="/search" role="button">
+                    <div class="card-header">工事検索</div>
 
-                <div class="card-body">
-                    @if (session('status'))
-                        <div class="alert alert-success" role="alert">
-                            {{ session('status') }}
-                        </div>
-                    @endif
+                    <div class="card-body">
+                        工事を閲覧・編集・削除します
+                    </div>
+                </a>
+            </div>
+        </div>
 
-                    You are logged in!
-                </div>
+        <div class="col-md-4">
+            <div class="card">
+                <a class="btn btn-info btn-lg" href="#" role="button">
+                    <div class="card-header">登録</div>
+
+                    <div class="card-body">
+                        新しく工事を登録します
+                    </div>
+                </a>
             </div>
         </div>
     </div>
