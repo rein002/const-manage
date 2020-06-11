@@ -1,11 +1,35 @@
 @extends('layouts.app')
 
 @section('content')
+
+<script>
+$(function(){
+    $('#status').change(function(){
+        if ($(this).val() === '発注済') {
+            $('#order_date').prop('disabled', false);
+        } else {
+            $('#order_date').prop('disabled', true);
+        }
+    });
+});
+</script>
+
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-md-12">
 
-            <form action="/searched" method="GET" class="form-inline">
+        <div class="col-md-8">
+            @if (count($errors) > 0)
+            <ul>
+                @foreach ($errors->all() as $err)
+                <li class="text-danger">{{$err}}</li>
+                @endforeach
+            </ul>
+            @endif
+        </div>
+
+        <div class="col-md-8">
+
+            <form action="/registered" method="POST">
                 @csrf
                 <div class="form-group">
                     <label for="const_name">工事名称</label>
@@ -33,7 +57,7 @@
                 </div>
                 <div class="form-group">
                     <label for="user_name">担当者</label>
-                    <input id="user_name" name="user_name" type="text" class="form-control" value="{{old('user_name')}}">
+                    <input id="user_name" name="user_name" type="text" class="form-control" value="{{Auth::user()->name}}" disabled="disabled">
                 </div>
                 <div class="form-group">
                     <label for="status">進捗状況</label>
@@ -46,44 +70,13 @@
                     </select>
                 </div>
                 <div class="form-group">
-                    <input type="submit" class="form-control" value="検索">
+                    <label for="order_date">発注日</label>
+                    <input id="order_date" name="order_date" type="date" class="form-control" disabled="disabled">
+                </div>
+                <div class="form-group">
+                    <input type="submit" class="form-control" value="登録">
                 </div>
             </form>
-
-            
-            @if ($searchResult === null)
-
-            @elseif ($searchResult)
-
-            <br>
-            <table class="table">
-                <tr>
-                    <th>工事名称</th>
-                    <th>工事場所</th>
-                    <th>種別</th>
-                    <th>担当者</th>
-                    <th>進捗状況</th>
-                    <th>発注日</th>
-                </tr>
-                @foreach ($searchResult as $record)
-                <tr>
-                    <td>{{$record->const_name}}</td>
-                    <td>{{$record->place}}</td>
-                    <td>{{$record->genre}}</td>
-
-                    <!-- 結合してきたuserテーブルのnameカラムを取得！ -->
-                    <td>{{$record->user->name}}</td>
-                    <td>{{$record->status}}</td>
-                    <td>{{$record->order_date}}</td>
-                </tr>
-                @endforeach
-            </table>
-
-            <div class="pagination justify-content-center">
-                {!!$searchResult->appends(['const_name'=>$const_name,'place'=>$place,'genre'=>$genre,'user_name'=>$user_name,'status'=>$status])->render()!!}
-            </div>
-
-            @endif
 
         </div>
     </div>

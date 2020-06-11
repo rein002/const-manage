@@ -22,7 +22,8 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-//Route::get('/browse', 'BrowseController@show');
-
 Route::get('/search', 'HomeController@search');
 Route::get('/searched', 'HomeController@searched');
+
+Route::get('/register', 'HomeController@register');
+Route::post('/registered', 'HomeController@registered');

@@ -148,6 +148,11 @@ return [
     'attributes' => [
         'email' => 'メールアドレス',
         'password' => 'パスワード',
+        'const_name' => '工事名称',
+        'place' => '工事場所',
+        'genre' => '工事種別',
+        'status' => '進捗状況',
+        'order_date' => '発注日',
     ],
 
 ];

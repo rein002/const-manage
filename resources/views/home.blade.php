@@ -17,7 +17,7 @@
 
         <div class="col-md-4">
             <div class="card">
-                <a class="btn btn-info btn-lg" href="#" role="button">
+                <a class="btn btn-info btn-lg" href="/register" role="button">
                     <div class="card-header">登録</div>
 
                     <div class="card-body">

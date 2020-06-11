@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\User;
 use App\Const_order;
+use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
 {
@@ -73,6 +74,27 @@ class HomeController extends Controller
             ->with('place',$place)
             ->with('user_name',$user_name)
             ->with('status',$status);
+    }
+
+
+    public function register() {
+        return view('browse.register');
+    }
+
+    //登録フォームからの入力で新規登録
+    public function registered(Request $req) {
+        $this->validate($req, Const_order::$rules); //入力値チェック
+
+        $req_params = $req->all(); //全てのリクエストパラメータを配列で取得
+        unset($req_params['user_name']); //user_name自体は使わないので除外
+        unset($req_params['_token']); //ワンタイムトークンも不要なので削除
+        $req_params['user_id'] = Auth::id(); //現在ログインしているユーザーのユーザーIDを配列に追加
+
+        //Const_orderモデル型インスタンスへ入力された値を埋め込む
+        $constOrder = new Const_order();
+        $constOrder->fill($req_params)
+                    ->save();
+        return view('browse.registered');
     }
 
 }
