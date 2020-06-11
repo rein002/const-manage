@@ -43,7 +43,7 @@ class HomeController extends Controller
         $const_name = $req->const_name;
         $place = $req->place;
         $genre = $req->genre;
-        $user_name = $req->user;
+        $user_name = $req->user_name;
         $status = $req->status;
 
         //モデルConst_orderに対し、クエリビルダを作成

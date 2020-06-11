@@ -72,7 +72,7 @@
                     <td>{{$record->genre}}</td>
 
                     <!-- 結合してきたuserテーブルのnameカラムを取得！ -->
-                    <td>{{$record->name}}</td>
+                    <td>{{$record->user->name}}</td>
                     <td>{{$record->status}}</td>
                     <td>{{$record->order_date}}</td>
                 </tr>
