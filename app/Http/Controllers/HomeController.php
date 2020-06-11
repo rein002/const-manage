@@ -46,8 +46,8 @@ class HomeController extends Controller
         $user_name = $req->user_name;
         $status = $req->status;
 
-        //モデルConst_orderに対し、クエリビルダを作成
-        $query = Const_order::query();
+        //モデルConst_orderに対し、usersテーブルを結合しクエリビルダを作成
+        $query = Const_order::join('users', 'const_orders.user_id', '=', 'users.id');
 
         if (!empty($const_name)) {
             $query->where('const_name','LIKE','%'.$const_name.'%');
