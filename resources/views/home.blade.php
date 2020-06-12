@@ -6,7 +6,7 @@
         <div class="col-md-4">
             <div class="card">
                 <a class="btn btn-info btn-lg" href="/search" role="button">
-                    <div class="card-header">工事検索</div>
+                    <div class="card-header">検索</div>
 
                     <div class="card-body">
                         工事を閲覧・編集・削除します

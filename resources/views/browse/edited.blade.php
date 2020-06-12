@@ -5,11 +5,11 @@
     <div class="row justify-content-center">
         <div class="col-md-4">
 
-            <p>登録しました！</p>
+            <p>更新しました！</p>
 
             <div class="text-center">
-                <a class="btn btn-info btn-lg" href="/register" role="button">
-                    登録画面へ
+                <a class="btn btn-info btn-lg" href="/search" role="button">
+                    検索画面へ
                 </a>
             </div>
 

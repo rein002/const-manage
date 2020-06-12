@@ -13,6 +13,13 @@ class Const_order extends Model
         'place' => 'required',
         'genre' => 'required',
         'status' => 'required',
+    ];
+
+    public static $rules_date = [
+        'const_name' => 'required',
+        'place' => 'required',
+        'genre' => 'required',
+        'status' => 'required',
         'order_date' => 'date',
     ];
 

@@ -50,6 +50,8 @@
                 </div>
             </form>
 
+            <hr>
+
             
             @if ($searchResult === null)
 
@@ -64,6 +66,7 @@
                     <th>担当者</th>
                     <th>進捗状況</th>
                     <th>発注日</th>
+                    <th></th>
                 </tr>
                 @foreach ($searchResult as $record)
                 <tr>
@@ -72,9 +75,16 @@
                     <td>{{$record->genre}}</td>
 
                     <!-- 結合してきたuserテーブルのnameカラムを取得！ -->
-                    <td>{{$record->user->name}}</td>
+                    <td>{{$record->name}}</td>
                     <td>{{$record->status}}</td>
                     <td>{{$record->order_date}}</td>
+
+                    <td>
+                        @if (Auth::id() === $record->user_id)
+                        <a href="/edit/{{$record->c_id}}">編集</a>
+                        <a href="/delete/{{$record->c_id}}">削除</a>
+                        @endif
+                    </td>
                 </tr>
                 @endforeach
             </table>

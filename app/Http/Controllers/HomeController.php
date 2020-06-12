@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\User;
 use App\Const_order;
 use Illuminate\Support\Facades\Auth;
+use DB;
 
 class HomeController extends Controller
 {
@@ -47,8 +48,15 @@ class HomeController extends Controller
         $user_name = $req->user_name;
         $status = $req->status;
 
-        //モデルConst_orderに対し、usersテーブルを結合しクエリビルダを作成
-        $query = Const_order::join('users', 'const_orders.user_id', '=', 'users.id');
+        /* テーブルconst_ordersに対し、usersテーブルを結合しクエリビルダを作成
+            編集・削除リンクを生成するため、usersテーブルのidをu_id、const_ordersテーブルのidをc_idに置き換え。
+                （idが被ってビューで上書きされてしまうため）
+            それに伴い、全カラム自動取得ではなく、select()により手動で取得する方針に変更した。 */
+        $query = DB::table('const_orders')
+                ->select('name', 'users.id as u_id',
+                    'const_orders.id as c_id', 'const_name', 'place', 'genre', 'user_id', 'status', 'order_date')
+                ->join('users', 'const_orders.user_id', '=', 'users.id');
+        //$query = Const_order::join('users', 'const_orders.user_id', '=', 'users.id');
 
         if (!empty($const_name)) {
             $query->where('const_name','LIKE','%'.$const_name.'%');
@@ -83,7 +91,7 @@ class HomeController extends Controller
 
     //登録フォームからの入力で新規登録
     public function registered(Request $req) {
-        $this->validate($req, Const_order::$rules); //入力値チェック
+        $this->checkInput($req); //入力値をチェック
 
         $req_params = $req->all(); //全てのリクエストパラメータを配列で取得
         unset($req_params['user_name']); //user_name自体は使わないので除外
@@ -96,5 +104,69 @@ class HomeController extends Controller
                     ->save();
         return view('browse.registered');
     }
+
+
+    //編集フォームからの入力で内容更新
+    public function edit(int $id) {
+        $selectedRecord = Const_order::findOrFail($id); //選択されたidの工事レコードを取得
+
+        //もしログイン中のユーザーでなければ追い返す
+        if (Auth::id() !== $selectedRecord->user_id) {
+            return redirect('/search');
+        } else {
+            //選択された工事の編集画面を返す（ビューで使用するデータを、工事情報と担当者で分けて送る）
+            return view('browse.edit', [
+                'selectedConst' => $selectedRecord, //工事情報はそのまま送る
+                'selectedUser' => User::findOrFail($selectedRecord->user_id) //工事情報に含まれるuser_idで、Userモデルのidを探して取得
+            ]);
+        }
+    }
+
+    public function edited(Request $req, int $id) {
+        $this->checkInput($req); //入力値をチェック
+
+        $editedConst = Const_order::find($id);
+        $editedConst->fill($req->except('_token', 'method'))
+                    ->save();
+        return view('browse.edited');
+    }
+
+
+    //削除リンクからの遷移で削除画面を表示
+    public function delete(int $id) {
+        $selectedRecord = Const_order::findOrFail($id); //選択されたidの工事レコードを取得
+
+        //もしログイン中のユーザーでなければ追い返す
+        if (Auth::id() !== $selectedRecord->user_id) {
+            return redirect('/search');
+        } else {
+            //選択された工事の削除画面を返す（ビューで使用するデータを、工事情報と担当者で分けて送る）
+            return view('browse.delete', [
+                'selectedConst' => $selectedRecord, //工事情報はそのまま送る
+                'selectedUser' => User::findOrFail($selectedRecord->user_id) //工事情報に含まれるuser_idで、Userモデルのidを探して取得
+            ]);
+        }
+    }
+
+    public function deleted(int $id) {
+        $selectedRecord = Const_order::findOrFail($id);
+        $selectedRecord->delete();
+        return view('browse/deleted');
+    }
+
+
+
+
+
+    //入力値チェックメソッド
+    private function checkInput(Request $req) {
+        //進捗状況が発注済の時は、日付の入力が必要なため、日付の条件を入れて入力値チェック
+        if ($req->status === '発注済') {
+            $this->validate($req, Const_order::$rules_date);
+        } else { //進捗状況が発注済でないとき、日付を入力できないようにしているため、日付の条件はスルーして入力値チェック
+            $this->validate($req, Const_order::$rules);
+        }
+    }
+    
 
 }

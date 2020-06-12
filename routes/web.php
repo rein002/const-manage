@@ -27,3 +27,9 @@ Route::get('/searched', 'HomeController@searched');
 
 Route::get('/register', 'HomeController@register');
 Route::post('/registered', 'HomeController@registered');
+
+Route::get('/edit/{id}', 'HomeController@edit');
+Route::patch('/edited/{id}', 'HomeController@edited');
+
+Route::get('/delete/{id}', 'HomeController@delete');
+Route::delete('/deleted/{id}', 'HomeController@deleted');
