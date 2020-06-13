@@ -8,7 +8,7 @@
             <p>削除しました！</p>
 
             <div class="text-center">
-                <a class="btn btn-info btn-lg" href="/search" role="button">
+                <a class="btn btn-info btn-lg" href="/browse/search" role="button">
                     検索画面へ
                 </a>
             </div>

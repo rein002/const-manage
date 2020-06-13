@@ -112,7 +112,7 @@ class HomeController extends Controller
 
         //もしログイン中のユーザーでなければ追い返す
         if (Auth::id() !== $selectedRecord->user_id) {
-            return redirect('/search');
+            return redirect('/browse/search');
         } else {
             //選択された工事の編集画面を返す（ビューで使用するデータを、工事情報と担当者で分けて送る）
             return view('browse.edit', [
@@ -138,7 +138,7 @@ class HomeController extends Controller
 
         //もしログイン中のユーザーでなければ追い返す
         if (Auth::id() !== $selectedRecord->user_id) {
-            return redirect('/search');
+            return redirect('/browse/search');
         } else {
             //選択された工事の削除画面を返す（ビューで使用するデータを、工事情報と担当者で分けて送る）
             return view('browse.delete', [
@@ -151,7 +151,7 @@ class HomeController extends Controller
     public function deleted(int $id) {
         $selectedRecord = Const_order::findOrFail($id);
         $selectedRecord->delete();
-        return view('browse/deleted');
+        return view('browse.deleted');
     }
 
 

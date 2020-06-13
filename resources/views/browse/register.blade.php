@@ -36,7 +36,7 @@ $(function(){
     <div class="row justify-content-center">
         <div class="col-md-6">
 
-            <form action="/registered" method="POST">
+            <form action="/browse/registered" method="POST">
                 @csrf
                 <div class="form-group">
                     <label for="const_name">工事名称</label>

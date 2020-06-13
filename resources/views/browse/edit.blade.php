@@ -37,7 +37,7 @@ $(function(){
     <div class="row justify-content-center">
         <div class="col-md-6">
 
-            <form action="/edited/{{$selectedConst->id}}" method="POST">
+            <form action="/browse/edited/{{$selectedConst->id}}" method="POST">
                 @csrf
                 @method('PATCH')
                 <div class="form-group">

@@ -5,7 +5,7 @@
     <div class="row justify-content-center">
         <div class="col-md-12">
 
-            <form action="/searched" method="GET" class="form-inline">
+            <form action="/browse/searched" method="GET" class="form-inline">
                 @csrf
                 <div class="form-group">
                     <label for="const_name">工事名称</label>
@@ -81,8 +81,8 @@
 
                     <td>
                         @if (Auth::id() === $record->user_id)
-                        <a href="/edit/{{$record->c_id}}">編集</a>
-                        <a href="/delete/{{$record->c_id}}">削除</a>
+                        <a href="/browse/edit/{{$record->c_id}}">編集</a>
+                        <a href="/browse/delete/{{$record->c_id}}">削除</a>
                         @endif
                     </td>
                 </tr>

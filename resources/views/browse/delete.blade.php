@@ -9,7 +9,7 @@
             <p>下記の工事を削除します。よろしいですか？</p>
             <p>（※削除すると元に戻せません）</p>
 
-            <form action="/deleted/{{$selectedConst->id}}" method="POST">
+            <form action="/browse/deleted/{{$selectedConst->id}}" method="POST">
                 @csrf
                 @method('DELETE')
                 <table class="table">

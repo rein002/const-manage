@@ -22,14 +22,14 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::get('/search', 'HomeController@search');
-Route::get('/searched', 'HomeController@searched');
+Route::get('/browse/search', 'HomeController@search');
+Route::get('/browse/searched', 'HomeController@searched');
 
-Route::get('/register', 'HomeController@register');
-Route::post('/registered', 'HomeController@registered');
+Route::get('browse/register', 'HomeController@register');
+Route::post('/browse/registered', 'HomeController@registered');
 
-Route::get('/edit/{id}', 'HomeController@edit');
-Route::patch('/edited/{id}', 'HomeController@edited');
+Route::get('/browse/edit/{id}', 'HomeController@edit');
+Route::patch('/browse/edited/{id}', 'HomeController@edited');
 
-Route::get('/delete/{id}', 'HomeController@delete');
-Route::delete('/deleted/{id}', 'HomeController@deleted');
+Route::get('/browse/delete/{id}', 'HomeController@delete');
+Route::delete('/browse/deleted/{id}', 'HomeController@deleted');

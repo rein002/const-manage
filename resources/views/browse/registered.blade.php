@@ -8,7 +8,7 @@
             <p>登録しました！</p>
 
             <div class="text-center">
-                <a class="btn btn-info btn-lg" href="/register" role="button">
+                <a class="btn btn-info btn-lg" href="/browse/register" role="button">
                     登録画面へ
                 </a>
             </div>
