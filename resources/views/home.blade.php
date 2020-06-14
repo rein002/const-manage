@@ -21,7 +21,7 @@
                     <div class="card-header">登録</div>
 
                     <div class="card-body">
-                        新しく工事を登録します
+                        新しく工事データを登録します
                     </div>
                 </a>
             </div>

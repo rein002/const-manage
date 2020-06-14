@@ -10,6 +10,7 @@
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
 
         <!-- Styles -->
+        <link href="{{ asset('css/app.css') }}" rel="stylesheet">
         <style>
             html, body {
                 background-color: #fff;
@@ -49,9 +50,9 @@
             }
 
             .links > a {
-                color: #636b6f;
-                padding: 0 25px;
-                font-size: 13px;
+                margin: 0 10px;
+                padding: 20px 25px;
+                font-size: 20px;
                 font-weight: 600;
                 letter-spacing: .1rem;
                 text-decoration: none;
@@ -62,6 +63,7 @@
                 margin-bottom: 30px;
             }
         </style>
+        
     </head>
     <body>
         <div class="flex-center position-ref full-height">
@@ -73,12 +75,12 @@
             @if (Route::has('login'))
                 <div class="center-center links">
                     @auth
-                        <a href="{{ url('/home') }}">トップへ</a>
+                        <a href="{{ url('/home') }}" class="btn btn-outline-primary btn-lg">トップへ</a>
                     @else
-                        <a href="{{ route('login') }}">ログイン</a>
+                        <a href="{{ route('login') }}" class="btn btn-outline-primary btn-lg">ログイン</a>
 
                         @if (Route::has('register'))
-                            <a href="{{ route('register') }}">新規登録</a>
+                            <a href="{{ route('register') }}" class="btn btn-outline-primary btn-lg">新規登録</a>
                         @endif
                     @endauth
                 </div>

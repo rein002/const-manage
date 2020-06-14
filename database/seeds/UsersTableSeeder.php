@@ -19,21 +19,39 @@ class UsersTableSeeder extends Seeder
         ]);
         DB::table('users')->insert([
             'id' => '11',
-            'name' => '鈴木太郎',
+            'name' => '発注太郎',
             'email' => 'tarou@example.com',
             'password' => bcrypt('00000000'),
         ]);
         DB::table('users')->insert([
             'id' => '21',
+            'name' => '発注次郎',
+            'email' => 'jirou@example.com',
+            'password' => bcrypt('00000000'),
+        ]);
+        DB::table('users')->insert([
+            'id' => '31',
+            'name' => '発注三郎',
+            'email' => 'saburou@example.com',
+            'password' => bcrypt('00000000'),
+        ]);
+        DB::table('users')->insert([
+            'id' => '41',
             'name' => '山田花子',
             'email' => 'hanako@example.com',
             'password' => bcrypt('00000000'),
         ]);
-
-
-
-        // DB::insert('INSERT INTO users (name, email, password) VALUES ("テストユーザー", "test@example.com", "test0000")');
-        // DB::insert('INSERT INTO users (name, email, password) VALUES ("鈴木太郎", "tarou@example.com", "00000000")');
-        // DB::insert('INSERT INTO users (name, email, password) VALUES ("山田花子", "hanako@example.com", "00000000")');
+        DB::table('users')->insert([
+            'id' => '51',
+            'name' => '佐藤春子',
+            'email' => 'haruko@example.com',
+            'password' => bcrypt('00000000'),
+        ]);
+        DB::table('users')->insert([
+            'id' => '61',
+            'name' => '鈴木夏子',
+            'email' => 'natsuko@example.com',
+            'password' => bcrypt('00000000'),
+        ]);
     }
 }

@@ -1,17 +1,18 @@
 @extends('layouts.app')
 
 @section('content')
+
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-12">
 
             <form action="/browse/searched" method="GET" class="form-inline">
                 @csrf
-                <div class="form-group">
+                <div class="form-group col-auto">
                     <label for="const_name">工事名称</label>
-                    <input id="const_name" name="const_name" type="text" class="form-control" value="{{old('const_name')}}">
+                    <input id="const_name" name="const_name" type="text" size="40" class="form-control" value="{{old('const_name')}}">
                 </div>
-                <div class="form-group">
+                <div class="form-group col-auto">
                     <label for="place">工事場所</label>
                     <select id="place" name="place" class="form-control" value="{{old('place')}}">
                         <option value=""></option>
@@ -21,7 +22,7 @@
                         <option value="D処理場">D処理場</option>
                     </select>
                 </div>
-                <div class="form-group">
+                <div class="form-group col-auto">
                     <label for="genre">工事種別</label>
                     <select id="genre" name="genre" class="form-control" value="{{old('genre')}}">
                         <option value=""></option>
@@ -31,11 +32,11 @@
                         <option value="電気">電気</option>
                     </select>
                 </div>
-                <div class="form-group">
+                <div class="form-group col-auto">
                     <label for="user_name">担当者</label>
                     <input id="user_name" name="user_name" type="text" class="form-control" value="{{old('user_name')}}">
                 </div>
-                <div class="form-group">
+                <div class="form-group col-auto">
                     <label for="status">進捗状況</label>
                     <select id="status" name="status" class="form-control" value="{{old('status')}}">
                         <option value=""></option>
@@ -45,13 +46,15 @@
                         <option value="発注済">発注済</option>
                     </select>
                 </div>
-                <div class="form-group">
+                <div class="form-group col-auto">
                     <input type="submit" class="form-control" value="検索">
                 </div>
             </form>
+        </div>
 
-            <hr>
+        <hr>
 
+        <div class="col-md-12">
             
             @if ($searchResult === null)
 
