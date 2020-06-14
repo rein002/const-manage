@@ -75,12 +75,12 @@
             @if (Route::has('login'))
                 <div class="center-center links">
                     @auth
-                        <a href="{{ url('/home') }}" class="btn btn-outline-primary btn-lg">トップへ</a>
+                        <a href="{{ url('/home') }}" class="btn btn-outline-primary">トップへ</a>
                     @else
-                        <a href="{{ route('login') }}" class="btn btn-outline-primary btn-lg">ログイン</a>
+                        <a href="{{ route('login') }}" class="btn btn-outline-primary">ログイン</a>
 
                         @if (Route::has('register'))
-                            <a href="{{ route('register') }}" class="btn btn-outline-primary btn-lg">新規登録</a>
+                            <a href="{{ route('register') }}" class="btn btn-outline-primary">新規登録</a>
                         @endif
                     @endauth
                 </div>
