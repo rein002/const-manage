@@ -25,6 +25,10 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/browse/search', 'HomeController@search');
 Route::get('/browse/searched', 'HomeController@searched');
 
+/* 0613追記
+    新規登録のリンクが消え、新規登録ができない問題が突然発生した。
+    原因究明に時間がかかったが、ルーティング/registerがログイン機能Authの/registerと被っていたことが原因だと判明。
+    /register → /browse/registerに修正することにより対処した。他のルーティングもこれに合わせて/browse/～に変更した。 */
 Route::get('browse/register', 'HomeController@register');
 Route::post('/browse/registered', 'HomeController@registered');
 
