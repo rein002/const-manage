@@ -11,6 +11,9 @@ class Const_ordersTableSeeder extends Seeder
      */
     public function run()
     {
+        DB::insert('INSERT INTO const_orders (const_name, place, genre, user_id, status, order_date) VALUES ("A処理場テスト工事", "A処理場", "機械", 1, "発注済", "2020-4-1")');
+        DB::insert('INSERT INTO const_orders (const_name, place, genre, user_id, status) VALUES ("B処理場テスト工事", "B処理場", "電気", 1, "設計中")');
+        
         DB::insert('INSERT INTO const_orders (const_name, place, genre, user_id, status, order_date) VALUES ("A処理場ポンプ棟躯体工事", "A処理場", "土木", 11, "発注済", "1998-6-1")');
         DB::insert('INSERT INTO const_orders (const_name, place, genre, user_id, status, order_date) VALUES ("A処理場ポンプ棟建築工事", "A処理場", "建築", 21, "発注済", "2000-7-1")');
         DB::insert('INSERT INTO const_orders (const_name, place, genre, user_id, status, order_date) VALUES ("A処理場汚水ポンプ設備工事", "A処理場", "機械", 31, "発注済", "2003-8-1")');

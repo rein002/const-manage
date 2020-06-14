@@ -10,7 +10,6 @@
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
 
         <!-- Styles -->
-        <link href="{{ asset('css/app.css') }}" rel="stylesheet">
         <style>
             html, body {
                 background-color: #fff;
@@ -50,8 +49,12 @@
             }
 
             .links > a {
+                color: #5D99FF;
                 margin: 0 10px;
                 padding: 20px 25px;
+                border: 2px solid;
+                border-radius: 5px;
+                border-color: #5D99FF;
                 font-size: 20px;
                 font-weight: 600;
                 letter-spacing: .1rem;
@@ -63,6 +66,19 @@
                 margin-bottom: 30px;
             }
         </style>
+
+        <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+        <script>
+            $(function(){
+                $(".button").mouseover(function(){
+                    $(this).css("color", "#FF773E")
+                            .css("border-color", "#FF773E");
+                }).mouseout(function(){
+                    $(this).css("color", "#5D99FF")
+                            .css("border-color", "#5D99FF");
+                });
+            });
+        </script>
         
     </head>
     <body>
@@ -75,12 +91,12 @@
             @if (Route::has('login'))
                 <div class="center-center links">
                     @auth
-                        <a href="{{ url('/home') }}" class="btn btn-outline-primary">トップへ</a>
+                        <a href="{{ url('/home') }}" class="button">トップへ</a>
                     @else
-                        <a href="{{ route('login') }}" class="btn btn-outline-primary">ログイン</a>
+                        <a href="{{ route('login') }}" class="button">ログイン</a>
 
                         @if (Route::has('register'))
-                            <a href="{{ route('register') }}" class="btn btn-outline-primary">新規登録</a>
+                            <a href="{{ route('register') }}" class="button">新規登録</a>
                         @endif
                     @endauth
                 </div>
