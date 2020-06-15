@@ -19,6 +19,14 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <style>
+        .table-responsive th {
+            white-space: nowrap;
+        }
+        .table-responsive td {
+            white-space: nowrap;
+        }
+    </style>
 </head>
 <body>
     <div id="app">
