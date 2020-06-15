@@ -51,10 +51,11 @@
                 </div>
             </form>
         </div>
+    </div>
 
         <hr>
 
-        <div class="col-md-12">
+    <div class="row justify-content-center">   
             
             @if ($searchResult === null)
 
@@ -100,7 +101,7 @@
 
             @endif
 
-        </div>
+        
     </div>
 </div>
 @endsection
