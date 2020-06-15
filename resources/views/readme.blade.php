@@ -8,11 +8,14 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
 
     <style>
+        h1 {
+            margin-top: 20px;
+        }
         h2 {
             margin-top: 40px;
         }
-        h1 {
-            margin-top: 20px;
+        h5 {
+            margin-left: 10px;
         }
         p {
             text-indent: 1em;
@@ -36,7 +39,7 @@
                 <h1>工事発注状況管理システム readme</h1>
     
                 <h2>要件定義</h2>
-                    <p>とある市役所では、公共工事の発注業務をそれぞれの担当者が行っている。1人が担当する工事は複数件あり、それらを各担当者が個別でExcelで管理している。しかし、これでは他の担当者が発注する関連工事の状況を、その都度担当者に確認しなければならず非常に業務効率が悪い。
+                    <p>とある市役所では、公共工事の発注業務をそれぞれの担当者が行っている。1人が担当する工事は複数件あり、それらを各担当者が個別でExcelで管理している。しかし、これでは他の担当者が発注する関連工事の状況を、その都度各担当者に確認しなければならず非常に業務効率が悪い。
                     <p>そこで、発注する全ての工事を一括で管理できる本システムを提案する。本システムを用いることで、他の担当者の工事名称や発注状況を一目で確認することができる。また、過去にどんな工事が発注されていたのかも素早く知ることができる。
                 
                 <h2>機能説明</h2>
@@ -54,8 +57,22 @@
                     <dd>検索結果一覧から削除画面へ移動し、工事を削除することができます。ただし、削除できる工事は自分が担当するものに限られます。</dd>
 
                     <dt>登録</dt>
-                    <dd>自分を担当者として、新規に工事を登録することができます。</dd>
+                    <dd>新規に工事を登録することができます。担当者はログインしているユーザーとなります。</dd>
                 </dl>
+
+                <h2>使用技術</h2>
+                <h5>使用言語</h5>
+                <ul>
+                    <li>HTML 5 / CSS 3</li>
+                    <li>jQuery 3.5.1</li>
+                    <li>PHP 7.2</li>
+                    <li>MySQL 5.5</li>
+                </ul>
+                <h5>使用フレームワーク</h5>
+                <ul>
+                    <li>Laravel 6</li>
+                    <li>Bootstrap 4</li>
+                </ul>
 
                 <div class="prev">
                     <a href="/">戻る</a>
