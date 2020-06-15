@@ -45,13 +45,13 @@
             }
 
             .title {
-                font-size: 84px;
+                font-size: 72px;
             }
 
             .links > a {
                 color: #5D99FF;
                 margin: 0 10px;
-                padding: 20px 25px;
+                padding: 15px 20px;
                 border: 2px solid;
                 border-radius: 5px;
                 border-color: #5D99FF;
@@ -64,6 +64,13 @@
 
             .m-b-md {
                 margin-bottom: 30px;
+            }
+
+
+            @media (max-width: 767px) {
+                .title {
+                    font-size: 30px;
+                }
             }
         </style>
 
