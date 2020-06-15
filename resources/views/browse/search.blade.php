@@ -61,36 +61,38 @@
             @elseif ($searchResult)
 
             <br>
-            <table class="table">
-                <tr>
-                    <th>工事名称</th>
-                    <th>工事場所</th>
-                    <th>種別</th>
-                    <th>担当者</th>
-                    <th>進捗状況</th>
-                    <th>発注日</th>
-                    <th></th>
-                </tr>
-                @foreach ($searchResult as $record)
-                <tr>
-                    <td>{{$record->const_name}}</td>
-                    <td>{{$record->place}}</td>
-                    <td>{{$record->genre}}</td>
+            <div class="table-responsive">
+                <table class="table table-striped">
+                    <tr class="table-info">
+                        <th>工事名称</th>
+                        <th>工事場所</th>
+                        <th>種別</th>
+                        <th>担当者</th>
+                        <th>進捗状況</th>
+                        <th>発注日</th>
+                        <th></th>
+                    </tr>
+                    @foreach ($searchResult as $record)
+                    <tr>
+                        <td>{{$record->const_name}}</td>
+                        <td>{{$record->place}}</td>
+                        <td>{{$record->genre}}</td>
 
-                    <!-- 結合してきたuserテーブルのnameカラムを取得！ -->
-                    <td>{{$record->name}}</td>
-                    <td>{{$record->status}}</td>
-                    <td>{{$record->order_date}}</td>
+                        <!-- 結合してきたuserテーブルのnameカラムを取得！ -->
+                        <td>{{$record->name}}</td>
+                        <td>{{$record->status}}</td>
+                        <td>{{$record->order_date}}</td>
 
-                    <td>
-                        @if (Auth::id() === $record->user_id)
-                        <a href="/browse/edit/{{$record->c_id}}">編集</a>
-                        <a href="/browse/delete/{{$record->c_id}}">削除</a>
-                        @endif
-                    </td>
-                </tr>
-                @endforeach
-            </table>
+                        <td>
+                            @if (Auth::id() === $record->user_id)
+                            <a href="/browse/edit/{{$record->c_id}}">編集</a>
+                            <a href="/browse/delete/{{$record->c_id}}">削除</a>
+                            @endif
+                        </td>
+                    </tr>
+                    @endforeach
+                </table>
+            </div>
 
             <div class="pagination justify-content-center">
                 {!!$searchResult->appends(['const_name'=>$const_name,'place'=>$place,'genre'=>$genre,'user_name'=>$user_name,'status'=>$status])->render()!!}
