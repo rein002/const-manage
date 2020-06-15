@@ -102,6 +102,9 @@
                 </div>
             @endif
 
+            <br><br><br>
+            <a href="/readme">はじめにこちらをご覧ください</a>
+
             </div>
         </div>
     </body>

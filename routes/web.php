@@ -37,3 +37,6 @@ Route::patch('/browse/edited/{id}', 'HomeController@edited');
 
 Route::get('/browse/delete/{id}', 'HomeController@delete');
 Route::delete('/browse/deleted/{id}', 'HomeController@deleted');
+
+
+Route::get('/readme', 'ReadmeController@readme');
