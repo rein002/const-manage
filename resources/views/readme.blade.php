@@ -25,6 +25,7 @@
         }
         .prev {
             margin-top: 40px;
+            margin-bottom: 30px;
             font-size: 18px;
             text-align: center;
         }
