@@ -3,7 +3,7 @@
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-md-4">
+        <div class="m-2 col-md-4 m-md-0">
             <div class="card">
                 <a class="btn btn-info btn-lg" href="/browse/search" role="button">
                     <div class="card-header">検索</div>
@@ -15,7 +15,7 @@
             </div>
         </div>
 
-        <div class="col-md-4">
+        <div class="m-2 col-md-4 m-md-0">
             <div class="card">
                 <a class="btn btn-info btn-lg" href="/browse/register" role="button">
                     <div class="card-header">登録</div>

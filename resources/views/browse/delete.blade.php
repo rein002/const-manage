@@ -6,8 +6,8 @@
     <div class="row justify-content-center">
         <div class="col-md-6">
 
-            <p>下記の工事を削除します。よろしいですか？</p>
-            <p>（※削除すると元に戻せません）</p>
+            <p>下記の工事を削除します。よろしいですか？<br></p>
+                （※削除すると元に戻せません）</p>
 
             <form action="/browse/deleted/{{$selectedConst->id}}" method="POST">
                 @csrf
@@ -41,7 +41,7 @@
                 
                 <div class="form-group">
                     <div class="row justify-content-center">
-                        <div class="col-md-6">
+                        <div class="col-6 col-md-6">
                             <input type="submit" class="form-control btn btn-danger btn-lg" value="削除">
                         </div>
                     </div>

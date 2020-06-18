@@ -85,7 +85,7 @@ $(function(){
                 </div>
                 <div class="form-group">
                     <div class="row justify-content-center">
-                        <div class="col-md-6">
+                        <div class="col-6 col-md-6">
                             <input type="submit" class="form-control btn btn-info btn-lg" value="更新">
                         </div>
                     </div>

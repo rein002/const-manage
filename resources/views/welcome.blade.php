@@ -66,6 +66,11 @@
                 margin-bottom: 30px;
             }
 
+            @media (max-width: 991px) {
+                .title {
+                    font-size: 48px;
+                }
+            }
 
             @media (max-width: 767px) {
                 .title {

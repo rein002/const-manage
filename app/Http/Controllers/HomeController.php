@@ -36,8 +36,19 @@ class HomeController extends Controller
         // $data = ['userList' => User::orderBy('name','asc')->pluck('name')];
         // return view('browse.search', $data);
 
-        //初回アクセス時はnullを渡し、何も表示しないように制御
-        return view('browse.search', ['searchResult' => null]);
+        /* 初回アクセス時はnullを渡し、何も表示しないように制御
+           表示件数、表示順序だけはデフォルト値を設定 */
+        return view('browse.search',
+                    ['searchResult' => null,
+                    'const_name' => null,
+                    'place' => null,
+                    'genre' => null,
+                    'user_name' => null,
+                    'status' => null,
+                    'order_date_from' => null,
+                    'order_date_to' => null,
+                    'displayed_num' => '10',
+                    'displayed_order' => '登録日DESC']);
     }
 
     //検索フォームから入力された値をもとに検索
@@ -47,6 +58,10 @@ class HomeController extends Controller
         $genre = $req->genre;
         $user_name = $req->user_name;
         $status = $req->status;
+        $order_date_from = $req->order_date_from;
+        $order_date_to = $req->order_date_to;
+        $displayed_num = $req->displayed_num;
+        $displayed_order = $req->displayed_order;
 
         /* テーブルconst_ordersに対し、usersテーブルを結合しクエリビルダを作成
             編集・削除リンクを生成するため、usersテーブルのidをu_id、const_ordersテーブルのidをc_idに置き換え。
@@ -54,9 +69,8 @@ class HomeController extends Controller
             それに伴い、全カラム自動取得ではなく、select()により手動で取得する方針に変更した。 */
         $query = DB::table('const_orders')
                 ->select('name', 'users.id as u_id',
-                    'const_orders.id as c_id', 'const_name', 'place', 'genre', 'user_id', 'status', 'order_date')
+                    'const_orders.id as c_id', 'const_name', 'place', 'genre', 'user_id', 'status', 'order_date', 'const_orders.created_at')
                 ->join('users', 'const_orders.user_id', '=', 'users.id');
-        //$query = Const_order::join('users', 'const_orders.user_id', '=', 'users.id');
 
         if (!empty($const_name)) {
             $query->where('const_name','LIKE','%'.$const_name.'%');
@@ -73,15 +87,43 @@ class HomeController extends Controller
         if (!empty($status)) {
             $query->where('status',$status);
         }
+        if (!empty($order_date_from)) {
+            $query->whereDate('order_date','>=',$order_date_from);
+        }
+        if (!empty($order_date_to)) {
+            $query->whereDate('order_date','<=',$order_date_to);
+        }
 
-        $searchResult = $query->paginate(10);
+        //選択によって並び順を指定（デフォルトを登録日の新しい順）
+        switch ($displayed_order) {
+            case '登録日ASC':
+                $query->orderByRaw('const_orders.created_at IS NULL ASC');
+                $query->orderBy('created_at', 'asc');
+                break;
+            case '発注日DESC':
+                $query->orderBy('order_date', 'desc');
+                break;
+            case '発注日ASC':
+                $query->orderByRaw('order_date IS NULL ASC');
+                $query->orderBy('order_date', 'asc');
+                break;
+            default:
+                $query->orderBy('created_at', 'desc');
+                break;
+        }
+
+        $searchResult = $query->paginate($displayed_num);
         return view('browse.search')
             ->with('searchResult',$searchResult)
             ->with('const_name',$const_name)
             ->with('genre',$genre)
             ->with('place',$place)
             ->with('user_name',$user_name)
-            ->with('status',$status);
+            ->with('status',$status)
+            ->with('order_date_from',$order_date_from)
+            ->with('order_date_to',$order_date_to)
+            ->with('displayed_num',$displayed_num)
+            ->with('displayed_order',$displayed_order);
     }
 
 
