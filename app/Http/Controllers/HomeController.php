@@ -7,6 +7,7 @@ use App\User;
 use App\Const_order;
 use Illuminate\Support\Facades\Auth;
 use DB;
+use Illuminate\Support\Facades\Mail;
 
 class HomeController extends Controller
 {
@@ -208,6 +209,24 @@ class HomeController extends Controller
         } else { //進捗状況が発注済でないとき、日付を入力できないようにしているため、日付の条件はスルーして入力値チェック
             $this->validate($req, Const_order::$rules);
         }
+    }
+
+
+
+    public function registrationCompleted() {
+        // $data = [
+        //     'introLines' => [Auth::user()->name.'様の本登録が完了致しました。'],
+        //     'outroLines' => ['心当たりがない場合は、本メッセージは破棄してください。']
+        // ];
+
+        // Mail::send('customAuth.registrationCompletedMail',
+        //             $data,
+        //             function($message) {
+        //                 $message
+        //                     ->to(Auth::user()->email)
+        //                     ->subject('本登録完了のお知らせ');
+        //             });
+        return view('customAuth.registrationCompleted');
     }
     
 

@@ -71,7 +71,7 @@
                 </ul>
                 <h5>使用フレームワーク</h5>
                 <ul>
-                    <li>Laravel 6</li>
+                    <li>Laravel 7</li>
                     <li>Bootstrap 4</li>
                 </ul>
 

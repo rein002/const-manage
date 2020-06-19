@@ -5,8 +5,9 @@
     <div class="row justify-content-center">
         <div class="col-md-4">
 
-            <p>削除しました！</p>
+            <h5 class="text-center">削除しました！</h5>
 
+            <br>
             <div class="text-center">
                 <a class="btn btn-info btn-lg" href="/browse/search" role="button">
                     検索画面へ
