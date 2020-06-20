@@ -43,4 +43,4 @@ Route::delete('/browse/deleted/{id}', 'HomeController@deleted');
 Route::get('/readme', 'ReadmeController@readme');
 
 
-Route::get('/registrationCompleted', 'HomeController@registrationCompleted');
+Route::get('/registrationCompleted', 'HomeController@registrationCompleted')->middleware('verified');
