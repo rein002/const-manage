@@ -29,6 +29,12 @@
             font-size: 18px;
             text-align: center;
         }
+        table {
+            margin-left: 10px;
+        }
+        td {
+            padding: 0 0 0 10px;
+        }
     </style>
 
 </head>
@@ -65,7 +71,7 @@
                 <h5>使用言語</h5>
                 <ul>
                     <li>HTML 5 / CSS 3</li>
-                    <li>jQuery 3.5.1</li>
+                    <li>jQuery 3.5</li>
                     <li>PHP 7.2</li>
                     <li>MySQL 5.5</li>
                 </ul>
@@ -74,6 +80,18 @@
                     <li>Laravel 7</li>
                     <li>Bootstrap 4</li>
                 </ul>
+
+                <h2>更新履歴</h2>
+                <table>
+                    <tr><td>2020-06-19</td><td>新規アカウント登録時において、メールアドレスの認証機能を追加</td></tr>
+                    <tr><td>2020-06-18</td><td>検索フォームに、発注日による絞込み機能，表示件数の選択機能，表示順序の選択機能を追加</td></tr>
+                    <tr><td valign="top">2020-06-17</td><td>ナビゲーションバーを追加<br>
+                                    検索結果の表をレスポンシブ対応に修正し、デザインをストライプに変更</td></tr>
+                    <tr><td valign="top">2020-06-16</td><td>readmeを作成<br>
+                                    検索ボタンを押したのち、フォームに入力した値が保持されるように変更</td></tr>
+                    <tr><td>2020-06-14</td><td>工事発注状況管理システム 初版完成</td></tr>
+                </table>
+
 
                 <div class="prev">
                     <a href="/">戻る</a>
