@@ -33,10 +33,6 @@ class HomeController extends Controller
     
 
     public function search() {
-        //pluck()メソッドでデータベースから配列を取得し、ビュー変数userListに格納
-        // $data = ['userList' => User::orderBy('name','asc')->pluck('name')];
-        // return view('browse.search', $data);
-
         /* 初回アクセス時はnullを渡し、何も表示しないように制御
            表示件数、表示順序だけはデフォルト値を設定 */
         return view('browse.search',

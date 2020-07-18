@@ -80,17 +80,7 @@
         </style>
 
         <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-        <script>
-            $(function(){
-                $(".button").mouseover(function(){
-                    $(this).css("color", "#FF773E")
-                            .css("border-color", "#FF773E");
-                }).mouseout(function(){
-                    $(this).css("color", "#5D99FF")
-                            .css("border-color", "#5D99FF");
-                });
-            });
-        </script>
+        <script src="{{asset('/js/welcom.js')}}"></script>
         
     </head>
     <body>
