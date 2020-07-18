@@ -80,7 +80,13 @@
         </style>
 
         <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-        <script src="{{asset('/js/welcom.js')}}"></script>
+        @if(app('env')=='local')
+            <script src="{{ asset('/js/welcom.js') }}"></script>
+        @endif
+        @if(app('env')=='production')
+            <script src="{{ secure_asset('/js/welcom.js') }}"></script>
+        @endif
+
         
     </head>
     <body>
