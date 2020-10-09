@@ -26,6 +26,8 @@ class VerificationController extends Controller
      *
      * @var string
      */
+
+                            //本登録時にどこへ飛ぶかをここで設定
     protected $redirectTo = '/registrationCompleted';
 
     /**
